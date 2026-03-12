@@ -49,7 +49,6 @@ public class PostWithSimpleJsonObject {
 		Assert.assertTrue(value==500);
 		System.out.println(value);
 		
-
 	}
 
 }
