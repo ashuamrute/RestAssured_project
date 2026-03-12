@@ -1,0 +1,31 @@
+
+
+// Chrome Headless
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--headless=new");
+WebDriver driver = new ChromeDriver(options);
+
+// Set secure certificate
+ChromeOptions options = new ChromeOptions();
+options.setAcceptInsecureCerts(true);
+WebDriver driver = new ChromeDriver(options);
+
+
+// configure browser to auto-download
+ChromeOptions options = new ChromeOptions();
+HashMap <String , Object> map = new HashMAp<>();
+map.put("download.default_directory","/download/path");
+map.put("download.prompt_for_download", false);
+options.setExperimentalOptions("prefs", map);
+
+// headless
+options.addArguments("--headless=new"); // chrome
+options.addArguments("--headless"); // Firefox
+options.addArguments("--headless");  // Edge
+WebDriver driver = new ChromeDriver(options);
+
+// Page load Strategy
+
+ChromeOptions options = new ChromeOptions();
+options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+WebDriver driver = new ChromeDriver(options);

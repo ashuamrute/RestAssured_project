@@ -1,0 +1,353 @@
+1. Reverse String 
+
+class Main {
+    public static void main(String[] args) {
+        String str = "java";
+        int len = str.length();
+        String rev = "";
+        
+        for(int i=len-1; i>=0; i--){
+            rev = rev + str.charAt(i);
+        }
+        System.out.println(rev);
+    }
+}
+
+2. Palindrome String
+
+class Main {
+    public static void main(String[] args) {
+        String str = "java";
+        int len = str.length();
+        String orgStr = str;
+        String rev = "";
+        
+        for(int i=len-1; i>=0; i--){
+            rev = rev + str.charAt(i);
+        }
+        System.out.println(rev); // avaj
+        
+        if(rev.equals(orgStr)){
+            System.out.println("String is Palindrome");
+        } else {
+            System.out.println("String is not Palindrome");
+        }
+    }
+}
+
+3. Reverse Number
+
+class Main {
+    public static void main(String[] args) {
+        int num = 123;
+        int rem;
+        int rev = 0;
+        
+        while(num>0){
+            rem = num % 10; // 3 // 2 // 1
+            rev = rev * 10 + rem;// 3 // 32 // 321
+            num = num /10;// 12 // 1
+        }
+        
+        System.out.println(rev);
+    }
+}
+
+4. Palindrome Number
+
+class Main {
+    public static void main(String[] args) {
+        int num = 123;
+        int rem;
+        int rev = 0;
+        int orgNum = num;
+        
+        while(num>0){
+            rem = num % 10;
+            rev = rev * 10 + rem;
+            num = num / 10;
+        }
+        
+        System.out.println(rev); // 321
+        
+        if(rev == orgNum){
+            System.out.println("Number is palindrome");
+        } else {
+            System.out.println("Number is not palindrome");
+        }
+    }
+}
+
+5. Reverse String by words
+
+class Main {
+    public static void main(String[] args) {
+        String str = "core java";
+        String[] strSplit = str.split(" ");
+        int len = strSplit.length;
+        String rev = "";
+        
+        for(int i=len-1; i>=0; i--){
+            rev = rev + strSplit[i] + " ";
+        }
+        System.out.println(rev);
+    }
+}
+
+6. Print first character in upper case
+
+class Main {
+    public static void main(String[] args) {
+        String str = "automation test engineer";
+        String[] strSplit = str.split(" ");
+        
+        
+        for(String s: strSplit){
+            System.out.print(s.substring(0,1).toUpperCase()+s.substring(1,s.length())+" ");
+        }
+    }
+}
+
+7. find occurance character string
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        String str = "java";
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        
+        for(int i=0; i<str.length(); i++){
+            if(charCount.containsKey(str.charAt(i))){
+                int count = charCount.get(str.charAt(i));
+                charCount.put(str.charAt(i), count+1);
+            } else {
+                charCount.put(str.charAt(i), 1);
+            }
+        }
+        System.out.println(charCount);
+    }
+}
+
+8. Swap without third variable
+
+class Main {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 20;
+        
+        num1 = num1 + num2;// 30
+        num2 = num1 - num2;// 10
+        num1 = num1 - num2;// 20
+        
+        System.out.println(num1);
+        System.out.println(num2);
+    }
+}
+
+9. Swap with third Variable
+
+class Main {
+    public static void main(String[] args) {
+        int num1 = 10;
+        int num2 = 20;
+        int temp;
+        
+        temp = num1;// 10
+        num1 = num2;// 20
+        num2 = temp;// 10
+        
+        System.out.println(num1); // 20
+        System.out.println(num2); // 10
+    }
+}
+
+10. Ascending or Descending order Array
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = new int[] {4, 5, 2, 7};
+        
+        for(int i=0; i<arr.length; i++){
+            
+            for(int j=i+1; j<arr.length; j++){
+                
+                int temp=0;
+                if(arr[i]>arr[j]){
+                    temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+11. Counter Number of vowels
+
+class Main {
+    public static void main(String[] args) {
+        String str = "I love india";
+        
+        int count = 0;
+        for(int i=0; i<str.length(); i++){
+            if(str.charAt(i)=='a' || str.charAt(i)=='e' || str.charAt(i)=='i' || str.charAt(i)=='o' || str.charAt(i)=='u' || 
+				str.charAt(i)=='A' || str.charAt(i)=='E' || str.charAt(i)=='I' || str.charAt(i)=='O' || str.charAt(i)=='U'){
+					count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+12. To find first Non Reated character
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        String str = "aabbdcdf";
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        
+        for(int i=0; i<str.length(); i++){
+            if(charCount.containsKey(str.charAt(i))){
+                int count = charCount.get(str.charAt(i));
+                charCount.put(str.charAt(i), count + 1);
+            } else {
+                charCount.put(str.charAt(i), 1);
+            }
+        }
+        System.out.println(charCount);
+        
+        for(int j=0; j<str.length(); j++){
+            if(charCount.get(str.charAt(j))==1){
+                System.out.println(str.charAt(j));
+                break;
+            }
+        }
+    }
+}
+
+13. To find 1st and 2nd largest number from array
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = new int[] {3,5,2,7};
+        
+        int firstMax = 0;
+        int secondMax = 0;
+        
+        for(int i=0; i<arr.length; i++){
+            
+            if(arr[i] > firstMax){
+                
+                secondMax = firstMax;
+                firstMax = arr[i];
+            } else if(arr[i] > secondMax) {
+                secondMax = arr[i];
+            }
+        }
+        System.out.println("First Max>> "+firstMax);
+        System.out.println("First Max>> "+secondMax);
+    }
+}
+
+14. Find duplicate element in Array
+
+class Main {
+    public static void main(String[] args) {
+        int[] num = new int[] {2,6,8,4,6,8,4,5,7,2};
+        
+        for(int i=0; i<num.length; i++){
+            for(int j=i+1; j<num.length; j++){
+                if(num[i] == num[j]){
+                    System.out.println("Duplicate>> "+num[i]);
+                }
+            }
+        }
+    }
+}
+
+15. Find Largest word from String
+
+class Main {
+    public static void main(String[] args) {
+        String str = "I am Prashant Dnyaneshwar Bagul";
+        String[] newStr = str.split(" ");
+        String largeStr = "";
+        
+        for(String lStr : newStr){
+            if(lStr.length() > largeStr.length()){
+                largeStr = lStr;
+            }
+        }
+        
+        System.out.println(largeStr);
+    }
+}
+
+16. Compare if the element is greater than left and right element, if true then print
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = new int[] {10,30,20,40,50,30,40,70,30};
+        
+        for(int i=1; i<arr.length; i++){
+            
+            if(arr[i]>arr[i-1] && arr[i]>arr[i+1]){
+                System.out.println(arr[i]);
+            }
+        }
+    }
+}
+
+17. find occurance of of integer from integer array
+
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1,2,3,4,5,4,6,2,7,4,8};
+        
+        HashMap<Integer, Integer> intCount = new HashMap<>();
+        for(int i=0; i<arr.length; i++){
+
+            if(intCount.containsKey(arr[i])){
+                int count = intCount.get(arr[i]);
+                intCount.put(arr[i], count + 1);
+            } else {
+                intCount.put(arr[i], 1);
+            }
+        }
+        System.out.println(intCount);
+    }    
+}
+
+18..
+public class ReverseSomeElementsFromStringArray {
+
+	public static void main(String[] args) {
+		String [] arr = {"Ashish", "is","in","the", "interview"};
+		// Opuput = {"Ashish", "the","in","is", "interview"};
+		
+		int left =1;
+		int right = arr.length-2;
+		
+		while(left<right) {
+			 String temp = arr[left];
+			 arr[left]=arr[right];
+			 arr[right]= temp;
+			 left++;
+			 right--;
+			
+		}
+		System.out.println(Arrays.toString(arr));
+	}
+
+}
+
+
+ 
+
+
+

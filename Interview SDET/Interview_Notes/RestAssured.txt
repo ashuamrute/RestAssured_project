@@ -1,0 +1,60 @@
+git status
+git add filename
+
+SQL:*******************
+Update employee SET salary =5000 Where empId=1;
+UPDATE table_name
+SET column1 = value1,
+    column2 = value2, ...
+WHERE condition;
+
+
+UPDATE employees
+SET salary = 60000
+WHERE employee_id = 101;
+
+Second Max salary:
+1. Select MAX(salary) From employee Order By DESC Limit 1 OffSet 1;
+2. Select Max(salary) From employee Where Salary<(Select Max(salary) From employee);
+
+
+Joins:
+Inner Join:
+1. SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;
+
+2. Left Join
+SELECT Customers.CustomerName, Orders.OrderID
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
+ORDER BY Customers.CustomerName;
+
+3. Right Join
+SELECT Orders.OrderID, Employees.LastName, Employees.FirstName
+FROM Orders
+RIGHT JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+ORDER BY Orders.OrderID;
+
+4. Group By
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+
+5. Having 
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Mathers.*;
+
+set base uri:
+RestAssured.BaseURI= "www.googlr.com";
+Response res=given().header("Accept","application/json").when().get("/post/1).then().statusCode(200).extract().response();
+
+JsonPath js = res.jsonPath();
+int id = js.getInt("id"); 
+String firstName = js.getString("firstName");

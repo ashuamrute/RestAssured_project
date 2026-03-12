@@ -1,0 +1,61 @@
+ternary operator :
+
+int number = 10; // Using ternary operator 
+	String result1 = (number % 2 == 0) ? "Even" : "Odd"; 
+	System.out.println("Number is: " + result1);
+	
+			// 1) send approach by JavascriptExecutor
+//		WebElement name=driver.findElement(By.id("name"));
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		
+//		js.executeScript("arguments[0].setAttribute('value','Ashish')", name);
+
+		// 2) Click Operation
+		WebElement male =driver.findElement(By.id("male"));
+		js.executeScript("arguments[0].click()", male);
+		
+	// 3) Scroll page to given coordinate
+		
+	js.executeScript("window.scrollBy(0,1000)", "");
+	
+	 
+	 
+	 //*******************************
+	 Use Exixting chrome session
+	 
+	 public class LaunchChromeForExistingSession {
+
+	public static void main(String[] args) {
+		ChromeDriver driver = new ChromeDriver();
+		System.out.println(driver.getCapabilities());   // chromeOptions: {debuggerAddress: localhost:56182}
+		driver.get("https:www.google.com");
+		
+
+	}
+
+}public class UseExixtingChromeSession {
+
+	public static void main(String[] args) {
+		ChromeOptions options = new ChromeOptions();
+		// chromeOptions: {debuggerAddress: localhost:56182}
+		options.setExperimentalOption("debuggerAddress", "localhost:56315");
+		ChromeDriver driver = new ChromeDriver(options);
+		driver.get("https://testautomationpractice.blogspot.com/");
+
+	}
+
+}
+
+*************************
+// Auto-boxing in Collections
+List<Integer> numbers = new ArrayList<>();
+numbers.add(10); // Auto-boxing: 10 -> new Integer(10)
+int firstNum = numbers.get(0); // Auto-unboxing: Integer -> int
+
+********************
+// Custom checked exception
+public class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}

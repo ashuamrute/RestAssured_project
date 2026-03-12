@@ -1,0 +1,65 @@
+1. What is the difference between git pull and git fetch?
+
+git fetch → downloads changes but doesn’t merge.
+
+git pull → fetches + merges into your current branch.
+
+
+2. What is Git Stash?
+
+Temporarily saves uncommitted changes so you can switch branches without losing work.
+# Work in progress, but need to switch branches 
+git stash
+
+git stash pop     ---restores them.
+
+
+3. How do you delete a branch (local & remote)?
+
+Local: git branch -d branchName
+
+Remote: git push origin --delete branchName
+
+
+4. What is the staging area in Git?
+
+A middle layer between working directory and repository.
+
+You add files with git add before committing.
+
+
+5.How do you resolve merge conflicts?
+
+Git marks conflicts in files. Take pull and 
+
+Manually edit, then run git add and git commit.
+
+
+6. What is the difference between git clone and git remote?
+
+git clone → copies a repo to your local machine.
+
+git remote → manages references to remote repositories
+
+
+7. How would you use Git in a CI/CD pipeline?
+
+Git triggers pipelines on commits/merge requests.
+
+Ensures automated builds, tests, and deployments.
+
+8. How do you ensure test stability with Git?
+
+Use branching strategy (feature branches, develop, main).
+
+Run automated tests on pull requests before merging.
+
+9. 
+Command	Purpose
+git stash	Save current changes (tracked files) and clear working directory.
+git stash list	Show all stashed changes.
+git stash pop	Apply the most recent stash and remove it from the stash list.
+git stash apply	Apply a stash but keep it in the stash list.
+git stash drop	Delete a specific stash.
+git stash clear	Remove all stashes.
+git stash show	Show details of the most recent stash

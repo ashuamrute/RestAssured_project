@@ -1,0 +1,73 @@
+go to gitlab
+Click on New Project
+Create Blank Project and give name
+Initialize repository with README file
+Click on Create pipeline
+Click on Edit and open in IDE under the Project
+Click on new File and Give name .gitlab-ci.yml
+Create_file:
+..image:alpine
+tab ..script:       format is markup laungauge
+....-echo "Building....."
+....-mkdir build
+....-touch build/somefile.txt
+
+add commit massage and commit these changes to main branch
+come to project and refresh..pipeline will trigger
+
+
+
+.gitlab-ci.yml file:-----------
+stages:
+-build
+-test
+
+Create_file:
+..image:alpine
+stage:build
+..script:       
+....-echo "Building....."
+....-mkdir build
+....-touch build/somefile.txt
+ artifacts:
+ paths:
+-buid/
+
+test_file:
+..image:alpine
+stage:test
+..script:
+..-test -f build/somefile.txt
+
+***************************************
+
+stages:
+  - build
+  - test
+  - deploy
+
+# Build stage...........
+build-job:
+  stage: build
+  script:
+    - echo "Compiling the project..."
+    - mvn clean install
+  artifacts:
+    paths:
+      - target/*.jar
+
+# Test stage...........
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - mvn test
+
+# Deploy stage............
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - scp target/*.jar user@server:/deployments/
+  only:
+    - main

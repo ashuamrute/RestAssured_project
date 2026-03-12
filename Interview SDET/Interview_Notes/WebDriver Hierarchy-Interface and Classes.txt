@@ -1,0 +1,7 @@
+                              SearchContext ------Parent Interface
+		  JavascriptExecutor     Webdriver       TakesSceenshot     -----Interfaces
+								RemoteWebDriver                       --Concrete class
+				ChromiumDriver     FireFoxDriver          SafariDriver   - Classes
+				
+				ChromeDriver										- class
+				EdgeDriver										- class

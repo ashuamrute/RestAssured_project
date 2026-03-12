@@ -1,0 +1,77 @@
+Page Object Model is a design pattern that represents each web page as a Java class.
+Advantages: - Improved maintainability (locators centralized in one place) - Reduced code
+duplication - Easy to update locators without touching test logic - Better readability and
+reusability - Separation of concerns (test logic vs. UI interactions)
+
+
+/////////////////////////
+public class loginPage{
+	private WebDriver driver;
+	
+	// Locators
+	private By userField = By.id("username");
+	private By passwordField = By.id("password");
+	private By loginButton = By.xpath("//button[@Id='submit']);
+	
+	// constructor
+	
+	public LoginPage(WebDriver driver){
+	this.driver = driver;
+	}
+	
+	// Page actions methods
+	
+	public void enterUsername(String username){
+	driver.findElement(userField).sendKeys(username);
+		
+	}
+	public void enterPassword(String password){
+	driver.findElement(passwordField).sendKeys(password);
+	
+	}
+	public DashboardPage loginClick(){
+	driver.findElement(loginButton).click();
+	return new DashboardPage(driver);
+	}
+		
+}
+
+// Test Logic
+
+public class loginTest{
+protected WebDriver driver;
+@Test     //import org.testng.annotations.Test;
+public void loginValidate(){
+  driver = new ChromeDriver();
+ driver.get("www.example.com/");
+ 
+ // create object of page class
+ loginPage lp = new loginPage(driver);
+ 
+ lp.enterUsername("acbd");
+ lp.enterPassword("123fghjkl");
+DashboardPage dash =lp.loginClick();
+ }
+
+}
+
+
+// DashboardPage
+
+public class DashboardPage{
+private WebDriver driver;
+
+// Locators 
+private By welcomeMessage = By.id("welcomeMsg"); 
+private By profileLink = By.id("profileLink");
+private By logoutButton = By.id("logoutBtn");
+
+// constructor
+public DashboardPage(WebDriver driver){
+this.driver = driver;
+}
+// Page actions 
+	public String getWelcomeMessage() { 
+		return driver.findElement(welcomeMessage).getText();
+		}
+}

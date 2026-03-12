@@ -1,0 +1,48 @@
+root start with /
+
+pwd - present working directory
+
+ls - list directory structure
+
+ls [options] [fileORdir]  -  usage
+
+ls [dir/] - will list all files in directory
+
+ls -l list out all contents in long format
+
+ls -a - will list hidden files also
+
+ls -S - all contents sorted with size
+
+ls -lS  - all content in long format and sorted by size
+
+ls -lS >out.txt => writes all content in a file 
+
+ls -d */ - will list only directories
+
+man ls - will list all ls options
+ 
+mkdir PlaywrightProject2
+ 
+Nodejs on linux
+
+sudo apt update
+
+sudo apt upgrade
+
+Add NodeSource repository for the latest version:
+
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+
+sudo apt install -y nodejs
+
+node -v
+
+npm -v
+ 
+sudo apt remove nodejs
+ 
+curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash -
+ 
+npx playwright test example.spec.ts --project=chromium
+ 

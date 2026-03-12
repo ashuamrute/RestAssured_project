@@ -1,0 +1,89 @@
+1. Encapsulation
+Definition: Wrapping data (variables) and methods into a single unit, hiding implementation details.
+
+Usage in Selenium:
+
+Create Page Object classes where locators and actions are encapsulated.
+
+Example: LoginPage.java contains private locators and public methods like login(username, password).
+
+Prevents direct access to locators from test classes.
+
+2. Inheritance
+Definition: One class can inherit properties and methods from another.
+
+Usage in Selenium:
+
+Base test class (BaseTest) with common setup/teardown (@BeforeClass, @AfterClass).
+
+Other test classes extend BaseTest to reuse driver initialization.
+
+public class BaseTest {
+    protected WebDriver driver;
+    @BeforeClass
+    public void setUp() { driver = new ChromeDriver(); }
+    @AfterClass
+    public void tearDown() { driver.quit(); }
+}
+
+public class LoginTest extends BaseTest {
+    @Test
+    public void testLogin() {
+        driver.get("https://example.com");
+    }
+}
+
+3.Polymorphism
+Definition: Same method name but different implementations.
+
+Usage in Selenium:
+
+Method overloading: clickElement(By locator) vs. clickElement(WebElement element).
+
+public class ElementHelper {
+    
+    // Overloaded method 1: accepts a By locator
+    public void clickElement(By locator) {
+        WebDriver driver = DriverManagerSingleton.getInstance().getDriver();
+        driver.findElement(locator).click();
+    }
+
+    // Overloaded method 2: accepts a WebElement directly
+    public void clickElement(WebElement element) {
+        element.click();
+    }
+}
+
+4. Abstraction
+Definition: Hiding implementation details and exposing only essential features.
+
+Usage in Selenium: .click(); .getText();, .sendKeys(); -- it give us the feature by hiding the implementation.
+
+Define abstract classes or interfaces for actions (e.g., BrowserDriver interface with startBrowser()).
+
+Concrete classes (ChromeDriverManager, FirefoxDriverManager) implement the interface.
+
+Test classes depend on abstraction, not implementation → easier to switch browsers.
+Step 1: Define the Interface
+public interface BrowserDriver { 
+WebDriver startBrowser(); 
+}
+
+Step 2: Implement for Chrome
+public class ChromeDriverManager implements BrowserDriver {
+ @Override 
+public WebDriver startBrowser() {
+ System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
+ return new ChromeDriver(); 
+}
+
+5. Singleton
+Definition: Only one instance of a class exists.
+
+Usage in Selenium:
+
+Manage WebDriver instance with a Singleton pattern (DriverManagerSingleton).
+
+Ensures only one browser instance per test run.
+
+Prevents multiple conflicting driver objects.

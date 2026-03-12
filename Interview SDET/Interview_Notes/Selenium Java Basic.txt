@@ -1,0 +1,40 @@
+// Page load Strategy
+
+ChromeOptions options = new ChromeOptions();
+options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+WebDriver driver = new ChromeDriver(options);
+
+// Default timeout 300000ms
+// script timeout 300000ms
+
+
+//DataBase Connection
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class DataBaseConnectionFromSelenuim {
+	public static void main(String[] args) throws SQLException {
+		Connection conn= null;
+		Statement statment =null;
+		ResultSet result= null;
+		
+		
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/databasetablename", "root", "password");
+			statment=conn.createStatement();
+			result= statment.executeQuery("Select FirstName, LastName,city From Customer");
+			while(result.next()) {
+				int id= result.getInt("Id");
+				String firstname= result.getString("FirstName");
+				String Lasttname= result.getString("LastName");
+			}
+			
+
+		
+	}
+
+}
+
+ 
